@@ -8,6 +8,7 @@ public class AppMain {
 //        Logger LOG = LoggerFactory.getLogger(AppMain.class);
 //        LOG.info("PDF转换程序启动");
         // YunXiaGao
+        // LY
         Application.launch(JFXMain.class, args);
     }
 }
