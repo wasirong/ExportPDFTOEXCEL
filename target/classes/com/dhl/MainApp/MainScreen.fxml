@@ -17,7 +17,7 @@
         <TextField fx:id="batchHWBQueryID" layoutX="225.0" layoutY="261.0" prefHeight="30.0" prefWidth="530.0" />
         <TextField fx:id="outputDirPathID" layoutX="225.0" layoutY="325.0" prefHeight="30.0" prefWidth="530.0" />
 
-        <Label layoutX="43.0" layoutY="193.0" text="数据源所在路径 :">
+        <Label layoutX="43.0" layoutY="193.0" text="PDF所在路径 :">
             <font>
                 <Font name="Microsoft YaHei" size="24.0" />
             </font>

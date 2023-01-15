@@ -75,7 +75,7 @@ public class TurnitInPDFReportProcessor {
                 inputCSVData.getCustomsDeclarationData().setGrossWeight(new BigDecimal(lines.get(i - 1)));
 //                LOG.info("PDF毛重(千克) : " + inputCSVData.getCustomsDeclarationData().getGrossWeight());
 
-            } else if (lines.get(i).contains("千克") && !lines.get(i).equals("净重(千克)") && !lines.get(i).equals("毛重(千克)")) {
+            } else if (lines.get(i).contains("千克") && !lines.get(i).equals("净重(千克)") && !lines.get(i).equals("毛重(千克)") && !lines.get(i).contains("/")) {
                 BigDecimal totalWeight = inputCSVData.getCustomsDeclarationData().getTempWeight().add(new BigDecimal(lines.get(i).replace("千克", "")));
 
                 inputCSVData.getCustomsDeclarationData().setTempWeight(totalWeight);
@@ -107,6 +107,14 @@ public class TurnitInPDFReportProcessor {
                     inputCSVData.setCustomsLogicWrong(inputCSVData.getCustomsLogicWrong() + "币别有误(" + lines.get(i) + ")/");
                 }
                 inputCSVData.getCustomsDeclarationData().setCurrencyType(lines.get(i));
+            }
+
+            if(lines.get(i).contains("运抵国")){
+                inputCSVData.getCustomsDeclarationData().setCountryOfArrival(lines.get(i - 1));
+            }
+
+            if(lines.get(i).contains("指运港")){
+                inputCSVData.getCustomsDeclarationData().setPortOfDestination(lines.get(i - 1));
             }
         }
 
@@ -241,6 +249,10 @@ public class TurnitInPDFReportProcessor {
         }
         if (!currencyCanRead) {
             inputCSVData.setMisMatch(inputCSVData.getMisMatch() + "币别不一致/");
+        }
+
+        if (!inputCSVData.getCustomsDeclarationData().getCountryOfArrival().equals(inputCSVData.getCustomsDeclarationData().getPortOfDestination())){
+            inputCSVData.setMisMatch(inputCSVData.getMisMatch() + "运抵国于指运港不一致/");
         }
 //        if (inputCSVData.getCustomsDeclarationData().getTransactionMethod().equals("CIF") && inputCSVData.getCustomsDeclarationData().getFreight() != 0) {
 //            inputCSVData.setCustomsLogicWrong(inputCSVData.getCustomsLogicWrong() + "成交方式与运费不匹配/");

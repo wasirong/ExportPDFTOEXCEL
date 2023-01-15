@@ -7,6 +7,28 @@ import java.math.BigDecimal;
  */
 public class CustomsDeclarationData {
 
+    // 运抵国
+    private String CountryOfArrival = "";
+
+    // 指运港
+    private  String PortOfDestination = "";
+
+    public String getCountryOfArrival() {
+        return CountryOfArrival;
+    }
+
+    public void setCountryOfArrival(String countryOfArrival) {
+        CountryOfArrival = countryOfArrival;
+    }
+
+    public String getPortOfDestination() {
+        return PortOfDestination;
+    }
+
+    public void setPortOfDestination(String portOfDestination) {
+        PortOfDestination = portOfDestination;
+    }
+
     // 报关单号
     private String customsDeclarationNumber = "";
 
